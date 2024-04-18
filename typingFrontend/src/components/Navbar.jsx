@@ -5,7 +5,7 @@ import '../styles/Navbar.css';
 const Navbar = () => {
   return (
     <div className="container">
-      <h1 className="heading">My Web App</h1>
+      <h1 className="heading">TypeClash.in</h1>
       <div className="nav-container" id="nav-container">
         <ul className="nav">
           <li className="nav-item">

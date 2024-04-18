@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import '../styles/Resultcontainer.css';
 
-const Resultcontainer = ({onSelectedTime,showData}) => {
+const Resultcontainer = ({onSelectedTime,showData,get_wpm_visibility,get_timer_visibility}) => {
     const [activeClass, setActiveClass] = useState({
         test_duration: '0:10',
         punctuation: 'on',
@@ -10,12 +10,19 @@ const Resultcontainer = ({onSelectedTime,showData}) => {
         show_wpm: 'show',
         show_timer: 'show'
     });
+    
 
-    const handleFilter = (category, value) => {
+    const handleFilter = (category, value,wpm_visibility,timer_visibility) => {
         setActiveClass({ ...activeClass, [category]: value });
         
         if(category === 'test_duration'){
             onSelectedTime(value);
+        }
+        if(category === 'show_wpm'){
+            get_wpm_visibility(wpm_visibility);
+        }
+        if(category === 'show_timer'){
+            get_timer_visibility(timer_visibility);
         }
     };
 
@@ -37,7 +44,7 @@ const Resultcontainer = ({onSelectedTime,showData}) => {
             }
         };
         sendFilters();
-    }, [activeClass]);
+    }, [activeClass.punctuation,activeClass.numbers,activeClass.words_list]);
     
 
     return (
@@ -151,15 +158,18 @@ const Resultcontainer = ({onSelectedTime,showData}) => {
                             <li>
                                 <span>Show WPM</span>
                                 <span>
+                                    
                                     <span
                                         className={`filter_option ${activeClass.show_wpm === 'show' && 'active'}`}
-                                        onClick={() => handleFilter('show_wpm', 'show')}
+                                        onClick={() => handleFilter('show_wpm', 'show','on')}
                                     >
                                         Show
                                     </span>
                                     <span
                                         className={`filter_option ${activeClass.show_wpm === 'hide' && 'active'}`}
-                                        onClick={() => handleFilter('show_wpm', 'hide')}
+                                        onClick={()=>{
+                                            handleFilter('show_wpm', 'hide','off')
+                                        }}
                                     >
                                         Hide
                                     </span>
@@ -170,13 +180,13 @@ const Resultcontainer = ({onSelectedTime,showData}) => {
                                 <span>
                                     <span
                                         className={`filter_option ${activeClass.show_timer === 'show' && 'active'}`}
-                                        onClick={() => handleFilter('show_timer', 'show')}
+                                        onClick={() => handleFilter('show_timer', 'show' ,'', 'on')}
                                     >
                                         Show
                                     </span>
                                     <span
                                         className={`filter_option ${activeClass.show_timer === 'hide' && 'active'}`}
-                                        onClick={() => handleFilter('show_timer', 'hide')}
+                                        onClick={() => handleFilter('show_timer', 'hide' ,'', 'off')}
                                     >
                                         Hide
                                     </span>
