@@ -29,7 +29,7 @@ const Resultcontainer = ({onSelectedTime,showData,get_wpm_visibility,get_timer_v
     useEffect(() => {
         const sendFilters = async () => {
             try {
-                const resp = await fetch('http://localhost:4000/api/paragraph', {
+                const resp = await fetch('http://localhost:5000/api/paragraph', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -86,19 +86,19 @@ const Resultcontainer = ({onSelectedTime,showData,get_wpm_visibility,get_timer_v
                                 <span>
                                     <span
                                         className={`filter_option ${activeClass.test_duration === '0:10' && 'active'}`}
-                                        onClick={() => handleFilter('test_duration', '0:10')}
+                                        onClick={() => handleFilter('test_duration', 10)}
                                     >
                                         0:10
                                     </span>
                                     <span
                                         className={`filter_option ${activeClass.test_duration === '0:30' && 'active'}`}
-                                        onClick={() => handleFilter('test_duration', '0:30')}
+                                        onClick={() => handleFilter('test_duration',30)}
                                     >
                                         0:30
                                     </span>
                                     <span
                                         className={`filter_option ${activeClass.test_duration === '1:00' && 'active'}`}
-                                        onClick={() => handleFilter('test_duration', '1:00')}
+                                        onClick={() => handleFilter('test_duration',60)}
                                     >
                                         1:00
                                     </span>

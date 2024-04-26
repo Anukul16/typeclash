@@ -1,9 +1,14 @@
 const express = require('express');
 const app = express();
 const paragraphRouter = require('../typingBackend/routes/paragraphRoute')
+const userRouter = require('../typingBackend/routes/userRoute.js')
 const cors = require('cors')
+const db = require('../typingBackend/config/dbconfig.js')
 
 app.use(cors());
+// app.use(express.json())
+
+
 
 app.get('/', (req, res) => {
     console.log("working");
@@ -12,7 +17,9 @@ app.get('/', (req, res) => {
 
 
 app.use('/api', paragraphRouter);
+app.use('/auth',userRouter);
 
-app.listen(4000, () => {
-    console.log("Server running on port 4000");
+app.listen(5000, () => {
+    console.log("Server running on port 5000");
 });
+

@@ -7,7 +7,7 @@ const paragraphs = [
 
     "High atop a snow-capped mountain peak, an expedition team braves freezing temperatures and treacherous terrain in search of a hidden treasure rumored to be buried at an altitude of 10,000 feet. Armed with climbing gear and survival supplies, the team sets out on their perilous journey, navigating icy slopes and crevasses along the way. With each step, they draw closer to their goal, fueled by the promise of adventure and the thrill of discovery. But as night falls and temperatures plummet, they must rely on their wits and teamwork to overcome the challenges that lie ahead."   
 ]
-let previousParaIndex = -1;
+let previousParaIndex = 0;
 
 const generateRandomParagraph = (punctuation, numbers, words_list) => {
     let paraIndex;
